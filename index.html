@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Pretty File // A Simple Way To Customize A File Selector</title>
+    <script src="jquery.js"></script>
+    <script src="prettyfile-1.0.0.js"></script>
+    <script type="text/javascript">
+         $(document).ready(function() {
+            $("#myFileSelector").prettyfile({
+                acceptedFileTypes: ["png", "jpg", "gif", "PNG", "JPG", "GIF"],
+                targetElement: "#myactualfile",
+                onSelect: function(uploadedFile) {
+                    alert("success!\n" + uploadedFile);
+                },
+                onError: function(status, message) {
+                    alert(status + "\n" + message);
+                }
+            });
+         });
+    </script>
+    <style type="text/css">
+        body {
+            font-size: 14px;
+            font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+        }
+        #myFileSelector {
+            background: #c644fc; /* Old browsers */
+            background: -moz-linear-gradient(top,  #c644fc 0%, #5856d6 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c644fc), color-stop(100%,#5856d6)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  #c644fc 0%,#5856d6 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  #c644fc 0%,#5856d6 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  #c644fc 0%,#5856d6 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  #c644fc 0%,#5856d6 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c644fc', endColorstr='#5856d6',GradientType=0 ); /* IE6-9 */
+            color: #FFF;
+            font-family: Verdana, Arial;
+            padding: 20px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius:10px;
+            width: 200px;
+            cursor: pointer;
+            text-align: center;
+        }
+        #myFileSelector:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="myFileSelector">Click Me To Select A File</div>
+    <h2 style="font-size: 16px;">Select any file that ends in "png", "jpg" or "gif". View The Source For Details.</h2>
+    <form>
+        <input type="file" name="file" id="myactualfile" />
+    </form>
+
+</body>
+</html>
