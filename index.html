@@ -4,17 +4,21 @@
     <meta charset="UTF-8" />
     <title>Pretty File // A Simple Way To Customize A File Selector</title>
     <script src="jquery.js"></script>
-    <script src="prettyfile-1.0.0.js"></script>
+    <script src="prettyfile-1.1.0.js"></script>
     <script type="text/javascript">
          $(document).ready(function() {
             $("#myFileSelector").prettyfile({
                 acceptedFileTypes: ["png", "jpg", "gif", "PNG", "JPG", "GIF"],
                 targetElement: "#myactualfile",
+                cancelElement: "#cancelFileText",
                 onSelect: function(uploadedFile) {
                     alert("success!\n" + uploadedFile);
                 },
                 onError: function(status, message) {
                     alert(status + "\n" + message);
+                },
+                onCancel: function() {
+                    alert("User cancelled file upload");
                 }
             });
          });
@@ -46,12 +50,16 @@
         #myFileSelector:hover {
             opacity: 0.9;
         }
+        #cancelFileText {
+            margin-top: 10px; display: block; cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
 
     <div id="myFileSelector">Click Me To Select A File</div>
+    <span id="cancelFileText">Cancel File Upload [x]</span>
     <h2 style="font-size: 16px;">Select any file that ends in "png", "jpg" or "gif". View The Source For Details.</h2>
     <form>
         <input type="file" name="file" id="myactualfile" />
